@@ -3,6 +3,13 @@ source 'https://rubygems.org'
 # Use devise for authentication
 gem 'devise'
 
+# Use Bootstrap 4 css framework
+gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'rails-assets-tether'
+
+# Use FontAwesome for icon font
+gem 'font-awesome-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgress as the database for Active Record
@@ -38,8 +45,13 @@ group :development, :test do
 end
 
 group :development do
-  # To use rails panel chrome extension
+  # Use rails panel chrome extension
   gem 'meta_request'
+  # Improve rails error pages
+  gem "better_errors"
+  # Preview emails in browser
+  gem "letter_opener"
+  gem 'letter_opener_web'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
