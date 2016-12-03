@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130121351) do
+ActiveRecord::Schema.define(version: 20161201124647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "homes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text     "name",                       null: false
+    t.integer  "points",     default: 1,     null: false
+    t.date     "deadline",                   null: false
+    t.integer  "every"
+    t.boolean  "since_done"
+    t.text     "status",                     null: false
+    t.text     "picture"
+    t.text     "tags",       default: [],                 array: true
+    t.boolean  "validated",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "home_id"
+    t.integer  "user_id"
+    t.index ["deadline"], name: "index_tasks_on_deadline", using: :btree
+    t.index ["home_id"], name: "index_tasks_on_home_id", using: :btree
+    t.index ["tags"], name: "index_tasks_on_tags", using: :btree
+    t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -35,9 +60,14 @@ ActiveRecord::Schema.define(version: 20161130121351) do
     t.integer  "points",                 default: 0,     null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "home_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["home_id"], name: "index_users_on_home_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "tasks", "homes"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "users", "homes"
 end
