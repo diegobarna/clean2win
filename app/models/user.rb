@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :home
-  has_many   :user
+  belongs_to :home, optional: true
+  has_many   :tasks
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

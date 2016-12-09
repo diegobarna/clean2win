@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201124647) do
+ActiveRecord::Schema.define(version: 20161209171029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "invitation_token"
+    t.index ["invitation_token"], name: "index_homes_on_invitation_token", unique: true, using: :btree
   end
 
   create_table "tasks", force: :cascade do |t|

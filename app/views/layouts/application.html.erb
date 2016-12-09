@@ -11,14 +11,14 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-fixed-top navbar-light">
+      <nav class="navbar navbar-full navbar-light">
         <a class="navbar-brand" href="#">
         <span class="brand-logo"><i class="fa fa-trophy"></i> Clean2win</span>
         </a>
         <button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-toggleable-sm float-xs-right" id="navbarResponsive">
           <ul class="nav navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="#">Chores</a>
             </li>
             <li class="nav-item">
@@ -27,19 +27,20 @@
             <li class="nav-item">
               <a class="nav-link" href="#">New Chore</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="responsiveNavbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-              <div class="dropdown-menu" aria-labelledby="responsiveNavbarDropdown">
-                <a class="dropdown-item" href="#">Invite</a>
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Log Out</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Invite</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log Out</a>
             </li>
           </ul>
         </div>
       </nav>  
 
-    <div class="container text-xs-center" id="main-container">
+    <div class="container" id="main-container">
       <%= yield %>
     </div>
 
