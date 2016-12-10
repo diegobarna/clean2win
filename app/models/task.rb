@@ -4,13 +4,15 @@ class Task < ApplicationRecord
   validates :name, presence: true, length: {maximum: 40}
   validates :tags, presence: true
 
-  private
-
-    def deadline_is_possible?
-      return if deadline.blank?
-      if deadline < Date.current
-        errors.add(:deadline, "can't be in the past")
-      end
+  def done!
+    unless user_id.present?
+      return false
     end
+    self.user.points += points
+    self.user.save!
+    self.status = "done"
+    save
+    return true
+  end
 
 end

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   }
   
   devise_scope :user do
-    root to: 'users/sessions#new'
+    root to: 'tasks#index'
+  end
+
+  resources :tasks do
+    post 'done'
+    post 'claim'
   end
 
   if Rails.env.development?

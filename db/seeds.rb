@@ -17,13 +17,13 @@ Task.create name: 'Limpiar el water', points: 5, deadline: Date.tomorrow, every:
             since_done: true, status: 'claimable', tags: ['wash', 'bathroom'], home_id: 1
 Task.create name: 'Limpiar el water', points: 4, deadline: Date.tomorrow, every: 7, 
             since_done: true, status: 'claimable', tags: ['wash', 'bathroom'], home_id: 2
-Task.create name: 'Barrer el salón', points: 1, deadline: 3.days.from_now, every: 3, 
+Task.create name: 'Barrer el salón', points: 2, deadline: 3.days.from_now, every: 3, 
             since_done: true, status: 'claimable', tags: ['wash', 'kitchen'], home_id: 1
-Task.create name: 'Barrer salón', points: 1, deadline: 4.days.from_now, every: 3, 
+Task.create name: 'Barrer salón', points: 2, deadline: 4.days.from_now, every: 3, 
             since_done: true, status: 'claimable', tags: ['wash', 'kitchen'], home_id: 2
-Task.create name: 'Barrer la cocina', points: 1, deadline: Date.tomorrow, every: 1, 
+Task.create name: 'Barrer la cocina', points: 2, deadline: Date.tomorrow, every: 1, 
             since_done: true, status: 'claimable', tags: ['wash', 'kitchen'], home_id: 1
-Task.create name: 'Barrer cocina', points: 1, deadline: Date.today, every: 1, 
+Task.create name: 'Barrer cocina', points: 2, deadline: Date.today, every: 1, 
             since_done: true, status: 'claimable', tags: ['wash', 'kitchen'], home_id: 2
 
 users = [

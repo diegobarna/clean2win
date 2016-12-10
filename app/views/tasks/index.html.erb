@@ -1,0 +1,23 @@
+<% unless @user_tasks.empty? %>
+  <h2>Your tasks</h2>
+  <ul>
+    <% @user_tasks.each do |task| %>
+      <li>
+        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - #{pluralize(task.points, 'point')}", task_path(task.id) %>
+        <%= link_to "Done", task_done_path(task_id: task.id), method: :post %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @home_tasks.empty? %>
+  <h2>Tasks not claimed</h2>
+  <ul>
+    <% @home_tasks.each do |task| %>
+      <li>
+        <%= link_to "#{task.name} - #{pluralize(task.points, 'point')}", task_path(task.id) %>
+        <%= link_to "Claim", task_claim_path(task_id: task.id), method: :post %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
