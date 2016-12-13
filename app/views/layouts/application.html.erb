@@ -12,18 +12,17 @@
 
   <body>
       <nav class="navbar navbar-full navbar-light">
-        <a class="navbar-brand float-xs-left" href="#">
+        <a class="navbar-brand float-xs-left" href="/tasks">
           <span class="brand-logo">
             <i class="fa fa-trophy" aria-hidden="true"></i>
-            <span class="hidden-sm-down">Clean2win</span>
-            <span class="hidden-md-up">c2w</span>
+            <span class="hidden-sm-down brand-text">Clean 2 Win</span>
           </span>
         </a>
         <% if user_signed_in? %>
           <span class="navbar-text">
             <%= current_user.name %>
             <span class="points-badge">
-              <%= current_user.points %>
+              <small><%= current_user.points %></small>
             </span>
           </span>
         <% end %>

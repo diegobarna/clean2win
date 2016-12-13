@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   def create
     task = Task.new task_params
     if task.save!
-      flash[:success] = "New task created successfully!"
+      flash[:success] = "New task created!"
       redirect_to root
     else
       render :new
@@ -14,12 +14,13 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = Task.find params[:id]
   end
 
   def update
     task = current_user.home.tasks.find params[:id]
     if @task.update! task_params
-      flash[:success] = "Task updated successfully!"
+      flash[:success] = "Task updated!"
       redirect_to root
     else
       render :edit
@@ -27,18 +28,23 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    task = Task.find params[:id]
+    if task.delete!
+      flash[:warning] = "Task deleted!"
+    end
   end
 
   def index
-    @user_tasks = current_user.tasks.where.not(status: 'done')
-                  .select(:id, :name, :points, :deadline)
-                  .order(:deadline).to_a
-    @home_tasks = current_user.home.tasks.where(user_id: nil)
-                  .select(:id, :name, :points, :deadline)
-                  .order(:deadline).to_a
+    tasks_list = current_user.home.tasks
+                  .select(:id, :name, :points, :deadline, :status, :user_id)
+
+    @user_tasks = tasks_list.where(user_id: nil)
+    @unclaimed_tasks = tasks_list.where(user_id: nil)
+    @home_tasks = tasks_list.where.not(user_id: [nil, current_user.id])
   end
 
   def show
+    @task = Task.find params[:id]
   end
 
   def done
