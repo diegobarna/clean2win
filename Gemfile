@@ -45,6 +45,8 @@ group :development, :test do
 end
 
 group :development do
+  # Easy check any user
+  gem 'switch_user'
   # Use rails panel chrome extension
   gem 'meta_request'
   # Improve rails error pages

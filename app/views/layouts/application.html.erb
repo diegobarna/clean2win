@@ -48,9 +48,11 @@
           <li class="nav-item">
             <%= link_to "About", '#', class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          </li>
+          <% if current_user.present? %>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>  
@@ -58,6 +60,9 @@
     <div class="container-fluid" id="main-container">
       <%= yield %>
     </div>
-
+    
+    <footer class="container footer">
+      <p>Made with a lot of <i class="fa fa-coffee" aria-hidden="true"></i> by Diego Castañeda</p>
+    </footer>
   </body>
 </html>

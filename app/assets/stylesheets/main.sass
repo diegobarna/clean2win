@@ -9,10 +9,15 @@ $modern-yellow: #FCF372
 // functional descriptions
 $bg_alpha: 0.85
 $bg_main_color: rgba($modern_green, $bg_alpha)
-$logo_color: rgba($modern-yellow, .95)
+$gold_color: rgba($modern-yellow, .90)
+
+html
+  position: relative
+  min-height: 100%
 
 body
   background-color: $modern-white
+  margin-bottom: 60px
 
 // Header
 
@@ -21,7 +26,7 @@ body
   height: 3.8rem
 
 .brand-logo
-  color: $logo_color
+  color: $gold_color
 
 .fa-trophy
   @media (max-width: 767px)
@@ -66,6 +71,76 @@ h2
   padding-top: 7px
   padding-left: 5px
 
+// Cards
 
+.card-header, .card-footer
+  background-color: rgba($modern-white, .80)
+  h5
+    margin-bottom: 0
 
+.room-background
+  background-size: contain
+  background-position: center center
+  background-repeat: no-repeat
+
+.bathroom
+  background-image: url('./rooms/bathroom.png')
+  @extend .room-background
+
+.kitchen
+  background-image: url('./rooms/kitchen.png')
+  @extend .room-background
+
+.bedroom
+  background-image: url('./rooms/bedroom.png')
+  @extend .room-background
+
+.dining-room
+  background-image: url('./rooms/dining-groom.png')
+  @extend .room-background
+
+.hallway
+  background-image: url('./rooms/hallway.png')
+  @extend .room-background
+
+.laundry-room
+  background-image: url('./rooms/laundry-room.png')
+  @extend .room-background
+
+.living-room
+  background-image: url('./rooms/living-room.png')
+  @extend .room-background
+
+.task-points
+  background-color: $modern-yellow
+  border: solid .2rem $bg_main_color
+  display: inline-block
+  width: 1.8rem
+  height: 1.8rem
+  text-align: center
+  vertical-align: middlee
+  background-origin: border-box
+
+.task-action
+  background-color: $modern-yellow
+  border: solid .4rem $bg_main_color
+  padding: 1rem
+  position: relative
+  width: 30%
+  height: 30%
+  margin: 1.5rem auto
+
+.card-footer .btn
+  width: 40%
+
+// Footer
+
+.footer
+  position: absolute
+  text-align: center
+  bottom: 0
+  width: 100%
+  height: 60px
+  line-height: 60px
+  background-color: $bg_main_color
 

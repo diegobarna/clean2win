@@ -16,11 +16,11 @@
       <div class="col-xs-12 col-sm-6">
         <%= f.label "Room", class: "col-xs-4 col-form-label" %>
         <div class="col-xs-8">
-          <%= f.select :status, [["Living room", "living_room"], 
-                                 ["Dining room", "dining_room"], 
+          <%= f.select :room, [["Living room", "living-room"], 
+                                 ["Dining room", "dining-room"], 
                                  ["Bathroom", "bathroom"],
                                  ["Kitchen", "kitchen"],
-                                 ["Laundry room", "laundry_room"],
+                                 ["Laundry room", "laundry-room"],
                                  ["Hallway", "hallway"],
                                  ["Bedroom", "bedroom"]], {}, {class: "custom-select"} %>
         </div>
@@ -29,7 +29,7 @@
       <div class="col-xs-12 col-sm-6">
         <%= f.label "Action", class: "col-xs-4 col-form-label" %>
         <div class="col-xs-8">
-          <%= f.select :status, [["Clean", "clean"],
+          <%= f.select :action, [["Clean", "clean"],
                                  ["Wash", "wash"],
                                  ["Dust", "dust"], 
                                  ["Sweep", "sweep"],

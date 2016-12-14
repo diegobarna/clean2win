@@ -6,9 +6,9 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.date :deadline, null:false
       t.integer :every
       t.boolean :since_done
-      t.text :status, null:false
-      t.text :picture
-      t.text :tags, array: true, default: []
+      t.text :status, null:false, default: 'claimable' 
+      t.text :room, null: false, default: 'living-room'
+      t.text :action, null: false, default: 'clean'
       t.boolean :validated, null: false, default: false
 
       t.timestamps

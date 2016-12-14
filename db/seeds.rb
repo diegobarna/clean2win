@@ -12,9 +12,9 @@ Task.create name: 'Clean the toilet', points: 5, deadline: Date.tomorrow, every:
 Task.create name: 'Clean the toilet', points: 4, deadline: Date.tomorrow, every: 7, 
             since_done: true, status: 'claimable', room: 'bathroom', action: 'toilet', home_id: 2
 Task.create name: 'Wipe living room', points: 2, deadline: 3.days.from_now, every: 3, 
-            since_done: true, status: 'claimable', room: 'living_room', action: 'wipe', home_id: 1
+            since_done: true, status: 'claimable', room: 'living-room', action: 'clean', home_id: 1
 Task.create name: 'Wipe living room', points: 2, deadline: 4.days.from_now, every: 3, 
-            since_done: true, status: 'claimable', room: 'living_room', action: 'wipe', home_id: 2
+            since_done: true, status: 'claimable', room: 'living-room', action: 'clean', home_id: 2
 Task.create name: 'Mop the kitchen', points: 2, deadline: Date.tomorrow, every: 1, 
             since_done: true, status: 'claimable', room: 'kitchen', action: 'mop', home_id: 1
 Task.create name: 'Mop the kitchen', points: 2, deadline: Date.today, every: 1, 

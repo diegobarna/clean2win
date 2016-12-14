@@ -1,41 +1,32 @@
 <% unless @user_tasks.empty? %>
   <h2>Your tasks</h2>
-  <ul>
-    <% @user_tasks.each do |task| %>
-      <li>
-        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
-                    #{pluralize(task.points, 'point')}", task_path(task.id) %>
-        <%= link_to "<i class='fa fa-check'></i> Done".html_safe, 
-                    task_done_path(task_id: task.id), method: :post, 
-                    class: "btn btn-success btn-sm" %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <% @user_tasks.each do |task| -%>
+
+      <%= render partial: 'task_card', locals: { task: task } %>
+
+    <% end -%>
+  </div>
 <% end %>
 
 <% unless @unclaimed_tasks.empty? %>
   <h2>Tasks not claimed</h2>
-  <ul>
-    <% @unclaimed_tasks.each do |task| %>
-      <li>
-        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
-                    #{pluralize(task.points, 'point')}", task_path(task.id) %>
-        <%= link_to "<i class='fa fa-hand-o-up'></i> Claim".html_safe, 
-                    task_claim_path(task_id: task.id), method: :post, 
-                    class: "btn btn-warning btn-sm" %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <% @unclaimed_tasks.each do |task| -%>
+
+      <%= render partial: 'task_card', locals: { task: task } %>
+
+    <% end -%>
+  </div>
 <% end %>
 
 <% unless @home_tasks.empty? %>
   <h2>Tasks already claimed</h2>
-  <ul>
-    <% @home_tasks.each do |task| %>
-      <li>
-        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
-            #{pluralize(task.points, 'point')} (#{task.user.name})", task_path(task.id) %>
-      </li>
+    <div class="row">
+      <% @home_tasks.each do |task| -%>
+
+      <%= render partial: 'task_card', locals: { task: task } %>
+      
     <% end %>
   </ul>
 <% end %>
