@@ -1,0 +1,90 @@
+<h2>New Task</h2>
+
+<div class="container">
+  <%= form_for @task do |f| %>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <%= f.label :name, class: "col-xs-4 col-sm-2 col-form-label" %>
+        <div class="col-xs-8 col-sm-10">
+          <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.label "Room", class: "col-xs-4 col-form-label" %>
+        <div class="col-xs-8">
+          <%= f.select :status, [["Living room", "living_room"], 
+                                 ["Dining room", "dining_room"], 
+                                 ["Bathroom", "bathroom"],
+                                 ["Kitchen", "kitchen"],
+                                 ["Laundry room", "laundry_room"],
+                                 ["Hallway", "hallway"],
+                                 ["Bedroom", "bedroom"]], {}, {class: "custom-select"} %>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <%= f.label "Action", class: "col-xs-4 col-form-label" %>
+        <div class="col-xs-8">
+          <%= f.select :status, [["Clean", "clean"],
+                                 ["Wash", "wash"],
+                                 ["Dust", "dust"], 
+                                 ["Sweep", "sweep"],
+                                 ["Vacuum", "vacuum"],
+                                 ["Mop", "mop"],
+                                 ["Garbage", "garbage"],
+                                 ["Laundry", "laundry"],
+                                 ["Toilet", "toilet"],
+                                 ["Dishes", "dishes"],
+                                 ["Detergent", "detergent"],
+                                 ["Spray", "spray"],
+                                 ["Brush", "brush"],
+                                 ["Plunger", "plunger"],
+                                 ["Dry clothes", "dry"]], {}, {class: "custom-select"} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12 col-sm-5">
+        <%= f.label :points, class: "col-xs-4 col-sm-5 col-form-label" %>
+        <div class="col-xs-4">
+          <%= f.number_field :points, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-7">
+        <%= f.label :deadline, class: "col-xs-4 col-form-label" %>
+        <div class="col-xs-8">
+          <%= f.date_field :deadline, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12 col-sm-5">
+        <%= f.label :every, class: "col-xs-4 col-sm-5 col-form-label" %>
+        <div class="col-xs-4">
+          <%= f.number_field :every, in: 0..28, class: "form-control" %>
+        </div>
+        <div class="col-xs-2 form-text">
+          days
+        </div>
+      </div>
+
+      <div class="offset-xs-4 col-xs-8 offset-sm-0 col-sm-7 form-text">
+        <label class="custom-control custom-checkbox">
+          <%= f.check_box :since_done, class: "custom-control-input" %>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">since done?</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="offset-xs-4 offset-sm-2 col-xs-8 ">
+      <%= f.submit "Create new task", class: "btn btn-primary" %>
+    </div>
+  <% end %>  
+</div>

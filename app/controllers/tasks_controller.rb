@@ -36,9 +36,9 @@ class TasksController < ApplicationController
 
   def index
     tasks_list = current_user.home.tasks
-                  .select(:id, :name, :points, :deadline, :status, :user_id)
+                  .select(:id, :name, :points, :deadline, :status, :room, :action, :user_id)
 
-    @user_tasks = tasks_list.where(user_id: nil)
+    @user_tasks = tasks_list.where('user_id = ? AND status != ?', current_user, 'done')
     @unclaimed_tasks = tasks_list.where(user_id: nil)
     @home_tasks = tasks_list.where.not(user_id: [nil, current_user.id])
   end
@@ -55,7 +55,8 @@ class TasksController < ApplicationController
         new_deadline = task.since_done ? Date.today + task.every : task.dateline + task.every
         Task.create name: task.name, points: task.points, deadline: new_deadline,
                     every: task.every, since_done: task.since_done, status: "claimable",
-                    picture: task.picture, tags: task.tags, home_id: task.home_id
+                    picture: task.picture, tags: task.tags, room: task.room, 
+                    action: task.action, home_id: task.home_id
       end
     end
     redirect_to tasks_path
@@ -74,6 +75,6 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit :name, :points, :deadline, :every, :since_done,
-                                   :status, :tags
+                                   :status, :room, :action
     end
 end

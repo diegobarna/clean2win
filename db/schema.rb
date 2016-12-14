@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209171029) do
+ActiveRecord::Schema.define(version: 20161213220509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,22 +23,21 @@ ActiveRecord::Schema.define(version: 20161209171029) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.text     "name",                       null: false
-    t.integer  "points",     default: 1,     null: false
-    t.date     "deadline",                   null: false
+    t.text     "name",                               null: false
+    t.integer  "points",     default: 1,             null: false
+    t.date     "deadline",                           null: false
     t.integer  "every"
     t.boolean  "since_done"
-    t.text     "status",                     null: false
-    t.text     "picture"
-    t.text     "tags",       default: [],                 array: true
-    t.boolean  "validated",  default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.text     "status",                             null: false
+    t.boolean  "validated",  default: false,         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "home_id"
     t.integer  "user_id"
+    t.text     "room",       default: "living room", null: false
+    t.text     "action",     default: "clean",       null: false
     t.index ["deadline"], name: "index_tasks_on_deadline", using: :btree
     t.index ["home_id"], name: "index_tasks_on_home_id", using: :btree
-    t.index ["tags"], name: "index_tasks_on_tags", using: :btree
     t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 

@@ -4,8 +4,10 @@
     <% @user_tasks.each do |task| %>
       <li>
         <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
-                                #{pluralize(task.points, 'point')}", task_path(task.id) %>
-        <%= link_to "Done", task_done_path(task_id: task.id), method: :post %>
+                    #{pluralize(task.points, 'point')}", task_path(task.id) %>
+        <%= link_to "<i class='fa fa-check'></i> Done".html_safe, 
+                    task_done_path(task_id: task.id), method: :post, 
+                    class: "btn btn-success btn-sm" %>
       </li>
     <% end %>
   </ul>
@@ -16,8 +18,11 @@
   <ul>
     <% @unclaimed_tasks.each do |task| %>
       <li>
-        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - #{pluralize(task.points, 'point')}", task_path(task.id) %>
-        <%= link_to "Claim", task_claim_path(task_id: task.id), method: :post %>
+        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
+                    #{pluralize(task.points, 'point')}", task_path(task.id) %>
+        <%= link_to "<i class='fa fa-hand-o-up'></i> Claim".html_safe, 
+                    task_claim_path(task_id: task.id), method: :post, 
+                    class: "btn btn-warning btn-sm" %>
       </li>
     <% end %>
   </ul>
@@ -28,7 +33,8 @@
   <ul>
     <% @home_tasks.each do |task| %>
       <li>
-        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - #{pluralize(task.points, 'point')} (#{task.user.name})", task_path(task.id) %>
+        <%= link_to "#{task.name} before #{task.deadline.to_formatted_s(:short)} - 
+            #{pluralize(task.points, 'point')} (#{task.user.name})", task_path(task.id) %>
       </li>
     <% end %>
   </ul>

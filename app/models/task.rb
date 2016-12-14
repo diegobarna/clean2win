@@ -8,11 +8,15 @@ class Task < ApplicationRecord
     unless user_id.present?
       return false
     end
-    self.user.points += points
-    self.user.save!
-    self.status = "done"
+    user.points += points
+    user.save!
+    status = "done"
     save
     return true
+  end
+
+  def new_deadline
+    return since_done ? Date.today + every : deadline + every
   end
 
 end
